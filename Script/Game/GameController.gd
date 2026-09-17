@@ -46,8 +46,16 @@ var dayNightCycleStep: int = 0
 signal endGameSig
 
 func _init() -> void:
-	LoadWords()
-	LoadHighScore()
+	if !OS.has_feature("web"):
+		easyWords.clear()
+		normalWords.clear()
+		extremeWords.clear()
+		
+		LoadWords()
+		LoadHighScore()
+	else:
+		print("USING WEB BUILD")
+		UsePresetWords()
 
 func _ready() -> void:
 	print("EASY COUNT: " + str(easyWords.size()))
@@ -239,3 +247,73 @@ func EndGame():
 	newHighScore = false
 	score = 0
 	visualScore = 0
+
+#bypass for web build
+func UsePresetWords():
+	easyWords.clear()
+	#easyWords.resize(161)
+	normalWords.clear()
+	#normalWords.resize(171)
+	extremeWords.clear()
+	#extremeWords.resize(162)
+	
+	#the long part, dont touch
+	easyWords = [
+	  "all", "and", "at", "arch", "auto", "ant", "art", "arm", "bed", "bomb", 
+	  "bend", "bad", "back", "bean", "clan", "can", "do", "dig", "down", "door", 
+	  "done", "dry", "dune", "deck", "damn", "dirt", "exit", "eat", "end", "even", 
+	  "earn", "each", "fish", "feed", "fry", "fall", "find", "fin", "foil", "face", 
+	  "font", "fun", "fine", "for", "give", "go", "get", "hay", "halo", "hero", 
+	  "hate", "home", "hut", "hell", "ill", "in", "item", "it", "joke", "just", 
+	  "jam", "kill", "kart", "know", "knit", "life", "limb", "loaf", "live", "leaf", 
+	  "let", "low", "link", "list", "much", "mini", "most", "mend", "max", "make", 
+	  "mark", "main", "nope", "not", "nut", "no", "over", "old", "odd", "old", 
+	  "part", "pray", "prey", "pint", "quad", "rest", "rise", "rent", "rope", "rank", 
+	  "roof", "rend", "roll", "stop", "slip", "slow", "slit", "set", "size", "slim", 
+	  "send", "sock", "self", "tend", "tent", "tell", "talk", "the", "then", "that", 
+	  "than", "thin", "time", "test", "tick", "tree", "toss", "trim", "tag", "try", 
+	  "top", "tear", "tomb", "trip", "use", "undo", "vow", "vend", "vent", "vote", 
+	  "veto", "went", "will", "wish", "work", "won", "win", "wake", "wing", "well", 
+	  "watt", "want", "xeno", "you", "yes", "your", "yest", "zone", "zest", "zeal", 
+	  "zoom"
+	]
+	normalWords = [
+	  "broke", "bored", "blunt", "close", "cross", "clash", "crash", "climb", "could", "crime", 
+	  "death", "erase", "earth", "embed", "frail", "freeze", "front", "grave", "glide", "grind", 
+	  "grill", "graft", "greet", "hello", "human", "horse", "harem", "island", "knight", "knife", 
+	  "leach", "lenght", "money", "moist", "notch", "party", "player", "preach", "press", "probe", 
+	  "print", "plant", "point", "quest", "reach", "rifle", "stand", "straw", "stretch", "strand", 
+	  "sleep", "slime", "screech", "screen", "scribe", "scale", "stripe", "strip", "skill", "scare", 
+	  "there", "those", "thick", "throw", "trick", "treat", "trust", "trench", "track", "trace", 
+	  "unless", "under", "until", "ultra", "unite", "vision", "visual", "winch", "wheat", "worth", 
+	  "worst", "wonder", "water", "wrath", "wretch", "wrong", "window", "wraith", "world", "alcohol", 
+	  "abysmal", "acended", "arcane", "breaker", "branded", "bottom", "caution", "creator", "cracked", "crevice", 
+	  "dressed", "divine", "divide", "desert", "dessert", "delete", "domain", "erected", "excited", "encode", 
+	  "extreme", "examine", "frantic", "frontal", "grilled", "gravity", "helium", "horizon", "healing", "heathen", 
+	  "highway", "ionized", "justice", "killing", "lighter", "listed", "lowered", "lesser", "logical", "liminal", 
+	  "lecture", "leasure", "mister", "monster", "murder", "moronic", "measure", "meaning", "nightly", "nueron", 
+	  "nullify", "organic", "precius", "posture", "portal", "pleased", "pulsate", "quality", "retired", "retreat", 
+	  "retort", "require", "relaxed", "remorse", "relapse", "robbery", "saliva", "solved", "typing", "texture", 
+	  "trying", "venture", "voltage", "vortex", "vector", "wistle", "warrior", "wanted", "wasted", "washed", 
+	  "zealess"
+	]
+	extremeWords = [
+	  "alternative", "alarming", "atribute", "alphabetical", "atrition", "atentive", "assembly", "armoured", "artillery", "altercation", 
+	  "breached", "blacklist", "blackout", "brooding", "branched", "condition", "creation", "crossing", "climbing", "composite", 
+	  "calculate", "complacent", "condenced", "crouching", "controller", "continental", "critical", "celestial", "computer", "destination", 
+	  "destruction", "degeneration", "degenerate", "deranged", "decorated", "deflation", "elongated", "extrordinary", "extraterestial", "existance", 
+	  "existancial", "entertainment", "evaperate", "evangalion", "etherial", "exterminate", "extirior", "electronic", "encampment", "endorsement", 
+	  "fragment", "foretold", "forgotten", "fermented", "germanic", "gargantuan", "grounded", "grieving", "gravitation", "gunpowder", 
+	  "harasment", "horizontal", "hoarding", "hesitate", "illiterate", "iluminate", "irational", "intermidiate", "interior", "international", 
+	  "interstate", "intercontinental", "indoctrinate", "indescretion", "interdimensional", "intercept", "interesting", "interested", "iregular", "lisening", 
+	  "literate", "language", "monopoly", "mortality", "multiply", "minister", "materialistic", "material", "morbidly", "minority", 
+	  "majority", "morality", "necrotic", "nocturnal", "northern", "november", "national", "nickname", "neandethal", "operation", 
+	  "overrated", "overturned", "override", "original", "orthographic", "pressure", "printing", "propaganda", "premature", "prepared", 
+	  "presentation", "pretentius", "preperation", "prototype", "prehistoric", "persuade", "question", "requested", "restoration", "recreate", 
+	  "retaliate", "relaxation", "rhetorical", "redistribute", "saturation", "senitize", "solution", "selection", "separation", "separatist", 
+	  "seclusion", "superior", "superstition", "suffering", "something", "television", "telephone", "tutorial", "transport", "transform", 
+	  "translate", "theoretical", "telegraph", "underated", "uninterested", "unintentional", "unlisted", "understandable", "understand", "unlikeable", 
+	  "unrestricted", "unemployed", "underestimate", "unlimited", "unranked", "variable", "visualize", "virtuous", "virtualize", "xylophone", 
+	  "yesturday", "yourself"
+	]
+	pass
