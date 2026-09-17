@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://cd5gvfttey5cg"]
+
+[ext_resource type="Script" uid="uid://c2k68q2f4mly4" path="res://Script/Targets/TypingTarget.gd" id="1_c16b7"]
+[ext_resource type="Material" uid="uid://bf7glu6ak1e17" path="res://Materials/Targets/Enemies/EnemyGray.tres" id="2_8uy7o"]
+[ext_resource type="Material" uid="uid://cls48u1xovf4i" path="res://Materials/Targets/Enemies/EnemyRed.tres" id="3_ku0rt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c16b7"]
+size = Vector3(0.6, 0.6, 0.6)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_mxvw5"]
+top_radius = 0.0
+bottom_radius = 0.2
+height = 0.6
+radial_segments = 8
+
+[sub_resource type="BoxMesh" id="BoxMesh_xrxkg"]
+size = Vector3(0.1, 0.53, 0.1)
+
+[node name="BasicEnemy" type="StaticBody3D" unique_id=205744907 groups=["Target"]]
+script = ExtResource("1_c16b7")
+moveSpeed = 18.0
+permanentOffset = Vector3(0, 0, 0)
+doSpinAnimation = true
+spinAnimationDirection = Vector3(0, 0, 2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=752188412]
+transform = Transform3D(0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_c16b7")
+
+[node name="Main" type="MeshInstance3D" parent="." unique_id=939478118]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+material_override = ExtResource("2_8uy7o")
+mesh = SubResource("CylinderMesh_mxvw5")
+
+[node name="Spike" type="MeshInstance3D" parent="." unique_id=126719400]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0.16720963, -0.23314476)
+material_override = ExtResource("3_ku0rt")
+mesh = SubResource("BoxMesh_xrxkg")
+
+[node name="Spike3" type="MeshInstance3D" parent="." unique_id=1443514894]
+transform = Transform3D(0.70710677, 0.7071067, -3.0908616e-08, 0, -4.3711385e-08, -0.99999994, -0.70710677, 0.7071067, -3.0908616e-08, 0.167, 0, -0.233)
+material_override = ExtResource("3_ku0rt")
+mesh = SubResource("BoxMesh_xrxkg")
+
+[node name="Spike4" type="MeshInstance3D" parent="." unique_id=1294115890]
+transform = Transform3D(0.7071067, -0.7071067, 3.0908616e-08, 0, -4.3711385e-08, -0.99999994, 0.7071067, 0.7071067, -3.0908616e-08, -0.167, 0, -0.233)
+material_override = ExtResource("3_ku0rt")
+mesh = SubResource("BoxMesh_xrxkg")
+
+[node name="Spike2" type="MeshInstance3D" parent="." unique_id=219896225]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, -0.167, -0.233)
+material_override = ExtResource("3_ku0rt")
+mesh = SubResource("BoxMesh_xrxkg")

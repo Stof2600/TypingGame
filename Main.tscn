@@ -1,0 +1,258 @@
+[gd_scene format=3 uid="uid://ry6dd8fvhejb"]
+
+[ext_resource type="Script" uid="uid://bnielja087w2v" path="res://Script/Game/GameController.gd" id="1_5tuhn"]
+[ext_resource type="Script" uid="uid://dp2335km7gx80" path="res://Script/World/WorldBuilder.gd" id="1_5vvyt"]
+[ext_resource type="PackedScene" uid="uid://4ycjnkantcn" path="res://Prefabs/Segments/StartSegment.tscn" id="2_c6i3y"]
+[ext_resource type="Script" uid="uid://c3a3iuawbe7sf" path="res://Script/Player/PlayerCorsshair.gd" id="2_r0du0"]
+[ext_resource type="Texture2D" uid="uid://dpkctp2iohkks" path="res://Sprites/Crosshair/Crosshair1.png" id="2_uu6xs"]
+[ext_resource type="Script" uid="uid://kpflvg8vokm2" path="res://Script/Player/PlayerMovement.gd" id="3_20pc6"]
+[ext_resource type="PackedScene" uid="uid://8hke3nvbbfgi" path="res://Prefabs/Segments/LoopSegment.tscn" id="3_c2ibq"]
+[ext_resource type="PackedScene" uid="uid://b0eeuysu4jva" path="res://Prefabs/Projectiles/PlayerLazer.tscn" id="4_3dxm6"]
+[ext_resource type="Texture2D" uid="uid://85jgs2dibl0n" path="res://Sprites/Crosshair/Crosshair2.png" id="4_cm0pq"]
+[ext_resource type="PackedScene" uid="uid://63vhpvx238w2" path="res://Prefabs/Segments/EmptySegment.tscn" id="4_j4qnp"]
+[ext_resource type="PackedScene" uid="uid://c52xkufyqxkmk" path="res://Prefabs/Segments/BridgeSegment.tscn" id="5_fpfj3"]
+[ext_resource type="PackedScene" uid="uid://c35qvucn13m1s" path="res://Prefabs/OptionTargets/StartOption.tscn" id="6_j4qnp"]
+[ext_resource type="PackedScene" uid="uid://pru3wm4um032" path="res://Prefabs/Segments/RuinSegment.tscn" id="7_devvj"]
+[ext_resource type="PackedScene" uid="uid://co8gon5s51qsk" path="res://Prefabs/OptionTargets/EasyOption.tscn" id="7_fpfj3"]
+[ext_resource type="Script" uid="uid://dhfajayhfoqtd" path="res://Script/Player/PlayerAnimator.gd" id="7_lgr22"]
+[ext_resource type="PackedScene" uid="uid://glvte55ftoc2" path="res://Prefabs/Segments/CitySegment.tscn" id="8_3b0ty"]
+[ext_resource type="Material" uid="uid://cm5gl0a3kalla" path="res://Materials/Player/ShipMain.tres" id="8_03owx"]
+[ext_resource type="PackedScene" uid="uid://g0gtiij8q0ul" path="res://Prefabs/OptionTargets/NormalOption.tscn" id="8_sc1dx"]
+[ext_resource type="PackedScene" uid="uid://cd5gvfttey5cg" path="res://Prefabs/Enemies/BasicEnemy.tscn" id="9_hhcpw"]
+[ext_resource type="PackedScene" uid="uid://djgo6hivl0der" path="res://Prefabs/OptionTargets/ExtremeOption.tscn" id="9_kjvhd"]
+[ext_resource type="Material" uid="uid://dmhmxqw6ec6g0" path="res://Materials/Player/ShipThruster.tres" id="9_wkp8b"]
+[ext_resource type="Material" uid="uid://dq4qjfnoca703" path="res://Materials/Player/ShipBoostRed.tres" id="10_wkp8b"]
+[ext_resource type="PackedScene" uid="uid://hvrhl4pxmq1g" path="res://Prefabs/Enemies/RareEnemy.tscn" id="10_xrxkg"]
+[ext_resource type="PackedScene" uid="uid://ble7w31xmu6g1" path="res://Prefabs/Enemies/FloatingEnemy.tscn" id="11_sqvbp"]
+[ext_resource type="PackedScene" uid="uid://dyd3hdq4p1an" path="res://Prefabs/Enemies/SlowEnemy.tscn" id="12_hri7i"]
+[ext_resource type="PackedScene" uid="uid://d08ucow528stt" path="res://Prefabs/Enemies/SmokeEnemy.tscn" id="13_w3rk5"]
+[ext_resource type="FontFile" uid="uid://bdnn1w7y16pad" path="res://Fonts/BetterVCR 25.09.ttf" id="19_hhcpw"]
+[ext_resource type="Material" uid="uid://bw03hbnwhhxt" path="res://Materials/Targets/Options/OptionDifDisplay.tres" id="20_2gh4u"]
+[ext_resource type="Texture2D" uid="uid://bwrbafc1venau" path="res://Sprites/Crosshair/CrosshairLock.png" id="20_mxvw5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rxg2q"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_glv2v"]
+sky_material = SubResource("ProceduralSkyMaterial_rxg2q")
+
+[sub_resource type="Environment" id="Environment_uu6xs"]
+background_mode = 1
+background_color = Color(0.47058824, 0.6156863, 0.6431373, 1)
+sky = SubResource("Sky_glv2v")
+tonemap_mode = 2
+
+[node name="Game" type="Node" unique_id=477051919 node_paths=PackedStringArray("startTarget", "difficultyTargets", "difficultyDisplay", "scoreDisplay", "highScoreDisplay", "timeDisplay") groups=["System"]]
+script = ExtResource("1_5tuhn")
+startTarget = NodePath("World/StartOption")
+difficultyTargets = [NodePath("World/EasyOption"), NodePath("World/NormalOption"), NodePath("World/ExtremeOption")]
+difficultyDisplay = NodePath("World/DifficultySelection")
+scoreDisplay = NodePath("Player/ScoreText")
+highScoreDisplay = NodePath("Player/HighScoreText")
+timeDisplay = NodePath("Player/TimerText")
+
+[node name="WorldData" type="WorldEnvironment" parent="." unique_id=61730665]
+environment = SubResource("Environment_uu6xs")
+
+[node name="World" type="Node3D" parent="." unique_id=1563607611]
+script = ExtResource("1_5vvyt")
+maxSegments = 4
+loopAfterSeg = 25
+startSegment = ExtResource("2_c6i3y")
+loopSegment = ExtResource("3_c2ibq")
+randomSegments = Array[PackedScene]([ExtResource("4_j4qnp"), ExtResource("2_c6i3y"), ExtResource("5_fpfj3"), ExtResource("7_devvj"), ExtResource("8_3b0ty")])
+enemyPrefabs = Array[PackedScene]([ExtResource("9_hhcpw"), ExtResource("11_sqvbp"), ExtResource("12_hri7i"), ExtResource("13_w3rk5")])
+rareEnemyPrefab = ExtResource("10_xrxkg")
+
+[node name="StartOption" parent="World" unique_id=206487964 instance=ExtResource("6_j4qnp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -10)
+
+[node name="EasyOption" parent="World" unique_id=1525928001 instance=ExtResource("7_fpfj3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 4, -10)
+
+[node name="NormalOption" parent="World" unique_id=111912818 instance=ExtResource("8_sc1dx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3, -10)
+
+[node name="ExtremeOption" parent="World" unique_id=1558487532 instance=ExtResource("9_kjvhd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, -10)
+
+[node name="DifficultySelection" type="CSGBox3D" parent="World" unique_id=1569883084]
+transform = Transform3D(0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0, 0, 1, 0.5, 0, -10.277342)
+size = Vector3(0.2, 0.2, 0.2)
+material = ExtResource("20_2gh4u")
+
+[node name="Player" type="Node3D" parent="." unique_id=1307385821 node_paths=PackedStringArray("cam") groups=["Player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+script = ExtResource("3_20pc6")
+cam = NodePath("../UI/SubViewportContainer/SubViewport/Camera3D")
+
+[node name="Crosshair" type="Node3D" parent="Player" unique_id=1429686336 node_paths=PackedStringArray("cam", "firePoint")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+script = ExtResource("2_r0du0")
+cam = NodePath("../../UI/SubViewportContainer/SubViewport/Camera3D")
+textOffset = Vector3(0.15, 0, 0)
+projectile = ExtResource("4_3dxm6")
+firePoint = NodePath("../Model/FirePoint")
+
+[node name="1" type="Sprite3D" parent="Player/Crosshair" unique_id=73854473]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("2_uu6xs")
+
+[node name="2" type="Sprite3D" parent="Player/Crosshair" unique_id=251764920]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.043167114)
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("4_cm0pq")
+
+[node name="3" type="Sprite3D" parent="Player/Crosshair" unique_id=1654212578]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0.06418526)
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("20_mxvw5")
+
+[node name="TypeText" type="Label3D" parent="Player/Crosshair" unique_id=42341358]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0, 0)
+no_depth_test = true
+texture_filter = 0
+render_priority = 5
+text = "garbage"
+font = ExtResource("19_hhcpw")
+font_size = 25
+horizontal_alignment = 0
+
+[node name="InputText" type="Label3D" parent="Player/Crosshair" unique_id=37086300]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0, 0)
+no_depth_test = true
+texture_filter = 0
+render_priority = 5
+modulate = Color(0.8285536, 0, 0.19888341, 1)
+text = "cool"
+font = ExtResource("19_hhcpw")
+font_size = 25
+horizontal_alignment = 2
+
+[node name="Model" type="Node3D" parent="Player" unique_id=1746463181 node_paths=PackedStringArray("trackingTarget")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, -0.3, -1)
+script = ExtResource("7_lgr22")
+trackingTarget = NodePath("../Crosshair/1")
+
+[node name="Body" type="CSGCylinder3D" parent="Player/Model" unique_id=1076604472]
+transform = Transform3D(1.9106855e-15, 4.3711385e-08, -1, 1, -4.3711385e-08, 0, -4.371139e-08, -0.99999994, -4.371139e-08, 0, 0, 0)
+material_override = ExtResource("8_03owx")
+radius = 0.1
+height = 0.7
+sides = 3
+cone = true
+
+[node name="WingL" type="CSGCylinder3D" parent="Player/Model" unique_id=198561458]
+transform = Transform3D(-0.22533472, -0.8274284, 0.51437956, 0.96486074, -0.2627618, 0, 0.13515931, 0.49630457, 0.8575626, -0.19796874, -0.050136443, 0.3718129)
+material_override = ExtResource("8_03owx")
+radius = 0.06
+height = 0.25
+sides = 3
+cone = true
+
+[node name="WingR" type="CSGCylinder3D" parent="Player/Model" unique_id=1698154881]
+transform = Transform3D(0.22474003, 0.8271805, 0.5150379, 0.9650165, -0.26218918, 0, 0.13503739, 0.49702007, -0.8571673, 0.198, -0.05, 0.372)
+material_override = ExtResource("8_03owx")
+radius = 0.06
+height = 0.25
+sides = 3
+cone = true
+
+[node name="Thruster" type="CSGTorus3D" parent="Player/Model" unique_id=1035548792]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 2.029629e-09, 0.34010315)
+material_override = ExtResource("9_wkp8b")
+inner_radius = 0.02
+outer_radius = 0.05
+
+[node name="Boost" type="Node3D" parent="Player/Model" unique_id=2075367099]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3758748)
+
+[node name="Boost1" type="CSGCylinder3D" parent="Player/Model/Boost" unique_id=1296271424]
+transform = Transform3D(1.9106855e-15, 4.371138e-08, 0.99999994, 0.99999994, -4.371138e-08, 0, 4.3711385e-08, 0.9999998, -4.3711385e-08, -2.4388225e-08, 0, 0.050994873)
+material_override = ExtResource("9_wkp8b")
+flip_faces = true
+radius = 0.034
+height = 0.098
+sides = 5
+cone = true
+
+[node name="Boost2" type="CSGCylinder3D" parent="Player/Model/Boost" unique_id=1191362146]
+transform = Transform3D(1.1464114e-15, 2.6226834e-08, 0.6, 0.6, -2.6226834e-08, -1.2705496e-22, 2.6226834e-08, 0.6, -2.6226834e-08, -2.4821764e-08, 4.3353882e-10, 0.04107666)
+material_override = ExtResource("10_wkp8b")
+flip_faces = true
+radius = 0.034
+height = 0.098
+sides = 5
+cone = true
+
+[node name="FirePoint" type="Node3D" parent="Player/Model" unique_id=1250559235]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.32023108)
+
+[node name="ScoreText" type="Label3D" parent="Player" unique_id=1211996300]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65, 1.2519665, -2)
+no_depth_test = true
+render_priority = 5
+text = "SCORE:"
+font = ExtResource("19_hhcpw")
+font_size = 25
+horizontal_alignment = 0
+
+[node name="HighScoreText" type="Label3D" parent="Player" unique_id=1705279389]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65, 1.4000001, -2)
+no_depth_test = true
+render_priority = 5
+modulate = Color(1, 1, 0.5882353, 1)
+text = "HIGH SCORE: 0000"
+font = ExtResource("19_hhcpw")
+font_size = 25
+horizontal_alignment = 0
+
+[node name="TimerText" type="Label3D" parent="Player" unique_id=1883494937]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.33, -2)
+no_depth_test = true
+render_priority = 5
+modulate = Color(0, 0.78431374, 1, 1)
+text = "TIME
+00:00:00"
+font = ExtResource("19_hhcpw")
+font_size = 25
+
+[node name="UI" type="Control" parent="." unique_id=848839959]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="UI" unique_id=34096219]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -768.0
+offset_bottom = -432.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="UI/SubViewportContainer" unique_id=935702066]
+handle_input_locally = false
+size = Vector2i(384, 216)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="UI/SubViewportContainer/SubViewport" unique_id=45207194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[connection signal="endGameSig" from="." to="World" method="ReturnToStart"]
+[connection signal="deathSignal" from="World/StartOption" to="." method="StartGame"]
+[connection signal="deathSignal" from="World/StartOption" to="World" method="LeaveStart"]
+[connection signal="deathSignal" from="World/EasyOption" to="." method="SetDifEasy"]
+[connection signal="deathSignal" from="World/NormalOption" to="." method="SetDifNormal"]
+[connection signal="deathSignal" from="World/ExtremeOption" to="." method="SetDifExtreme"]

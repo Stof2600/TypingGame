@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://8hke3nvbbfgi"]
+
+[ext_resource type="Material" uid="uid://chu62y6cjsklt" path="res://Materials/World/Water.tres" id="1_kmq4j"]
+[ext_resource type="Material" uid="uid://bx1b66vnj8cnt" path="res://Materials/World/Grass.tres" id="2_lyspb"]
+[ext_resource type="Material" uid="uid://dwxoe14feom68" path="res://Materials/World/WaterDepths.tres" id="3_xtxjt"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uu6xs"]
+size = Vector2(500, 50)
+
+[node name="LoopSegment" type="Node3D" unique_id=1411607530]
+
+[node name="Ground" type="MeshInstance3D" parent="." unique_id=925579563]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25)
+material_override = ExtResource("1_kmq4j")
+mesh = SubResource("PlaneMesh_uu6xs")
+surface_material_override/0 = ExtResource("2_lyspb")
+
+[node name="Ground2" type="MeshInstance3D" parent="." unique_id=1040423173]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -25)
+material_override = ExtResource("1_kmq4j")
+mesh = SubResource("PlaneMesh_uu6xs")
+surface_material_override/0 = ExtResource("2_lyspb")
+
+[node name="Ground3" type="MeshInstance3D" parent="." unique_id=849408433]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, -25)
+material_override = ExtResource("3_xtxjt")
+mesh = SubResource("PlaneMesh_uu6xs")
+surface_material_override/0 = ExtResource("2_lyspb")

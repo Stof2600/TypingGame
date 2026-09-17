@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://d08ucow528stt"]
+
+[ext_resource type="Script" uid="uid://c2k68q2f4mly4" path="res://Script/Targets/TypingTarget.gd" id="1_fnptp"]
+[ext_resource type="Material" uid="uid://bf7glu6ak1e17" path="res://Materials/Targets/Enemies/EnemyGray.tres" id="2_ikdif"]
+[ext_resource type="Material" uid="uid://cls48u1xovf4i" path="res://Materials/Targets/Enemies/EnemyRed.tres" id="3_8vkd3"]
+[ext_resource type="Material" uid="uid://dm2v4q6y3fpx3" path="res://Materials/Targets/Enemies/EnemyDetail1.tres" id="3_ikdif"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8vkd3"]
+size = Vector3(1.225, 0.9, 1.305)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_mxvw5"]
+top_radius = 0.0
+bottom_radius = 0.35
+height = 0.7
+radial_segments = 4
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_obbm1"]
+top_radius = 0.0
+bottom_radius = 0.3
+height = 0.5
+radial_segments = 4
+
+[sub_resource type="TorusMesh" id="TorusMesh_uvj26"]
+inner_radius = 0.3
+outer_radius = 0.5
+rings = 8
+ring_segments = 4
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jk5bl"]
+direction = Vector3(0, 0, 1)
+initial_velocity_min = 1.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+damping_min = 0.3
+damping_max = 3.0000002
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j3djp"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.24705882, 0.24705882, 0.24705882, 0.85490197)
+
+[sub_resource type="SphereMesh" id="SphereMesh_xqjt7"]
+material = SubResource("StandardMaterial3D_j3djp")
+radial_segments = 4
+rings = 2
+
+[node name="SmokeEnemy" type="StaticBody3D" unique_id=205744907 groups=["Target"]]
+script = ExtResource("1_fnptp")
+moveSpeed = 30.0
+onDeathScore = 75
+spawnBehindPlayer = true
+permanentOffset = Vector3(0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=752188412]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, -0.003522249, 0)
+shape = SubResource("BoxShape3D_8vkd3")
+
+[node name="Main" type="MeshInstance3D" parent="." unique_id=939478118]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 0.5, 0, -1, -2.1855694e-08, 0, 0, -0.3442282)
+material_override = ExtResource("2_ikdif")
+mesh = SubResource("CylinderMesh_mxvw5")
+
+[node name="Main2" type="MeshInstance3D" parent="." unique_id=761054074]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -0.5, 0, 1, -2.1855694e-08, 0, 0, 0.21639991)
+mesh = SubResource("CylinderMesh_obbm1")
+surface_material_override/0 = ExtResource("3_ikdif")
+
+[node name="Ring1" type="MeshInstance3D" parent="." unique_id=893638724]
+transform = Transform3D(0.3099755, -0.8516507, -0.42261827, 0.9396926, 0.34202015, 0, 0.14454396, -0.39713126, 0.90630776, -0.32375968, 0, 0.22659308)
+mesh = SubResource("TorusMesh_uvj26")
+surface_material_override/0 = ExtResource("3_8vkd3")
+
+[node name="Ring2" type="MeshInstance3D" parent="." unique_id=1079784088]
+transform = Transform3D(0.3099755, 0.8516507, 0.42261824, -0.9396926, 0.34202015, 0, -0.14454396, -0.39713126, 0.9063077, 0.324, 0, 0.227)
+mesh = SubResource("TorusMesh_uvj26")
+surface_material_override/0 = ExtResource("3_8vkd3")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1620808330]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.6644192)
+transform_align = 2
+process_material = SubResource("ParticleProcessMaterial_jk5bl")
+draw_pass_1 = SubResource("SphereMesh_xqjt7")

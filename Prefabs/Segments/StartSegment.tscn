@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://4ycjnkantcn"]
+
+[ext_resource type="Material" uid="uid://bx1b66vnj8cnt" path="res://Materials/World/Grass.tres" id="1_ccloc"]
+[ext_resource type="Material" uid="uid://bkx0j4hrw57w8" path="res://Materials/World/Building.tres" id="2_0q8ti"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uu6xs"]
+size = Vector2(500, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5vvyt"]
+size = Vector3(5, 10, 5)
+
+[node name="StartSegment" type="Node3D" unique_id=1911819567]
+
+[node name="Ground" type="MeshInstance3D" parent="." unique_id=1011994539]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25)
+mesh = SubResource("PlaneMesh_uu6xs")
+surface_material_override/0 = ExtResource("1_ccloc")
+
+[node name="Building" type="MeshInstance3D" parent="." unique_id=1660548776]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 5, -15.275419)
+mesh = SubResource("BoxMesh_5vvyt")
+surface_material_override/0 = ExtResource("2_0q8ti")
+
+[node name="Building2" type="MeshInstance3D" parent="." unique_id=1467867966]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 5, -31.27542)
+mesh = SubResource("BoxMesh_5vvyt")
+surface_material_override/0 = ExtResource("2_0q8ti")
+
+[node name="Building3" type="MeshInstance3D" parent="." unique_id=1247855465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 5, -15.275419)
+mesh = SubResource("BoxMesh_5vvyt")
+surface_material_override/0 = ExtResource("2_0q8ti")
+
+[node name="Building4" type="MeshInstance3D" parent="." unique_id=1403591784]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 5, -31.27542)
+mesh = SubResource("BoxMesh_5vvyt")
+surface_material_override/0 = ExtResource("2_0q8ti")
+
+[node name="Building5" type="MeshInstance3D" parent="." unique_id=1331536775]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 5, -47.27542)
+mesh = SubResource("BoxMesh_5vvyt")
+surface_material_override/0 = ExtResource("2_0q8ti")
+
+[node name="Building6" type="MeshInstance3D" parent="." unique_id=1492391743]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 5, -47.27542)
+mesh = SubResource("BoxMesh_5vvyt")
+surface_material_override/0 = ExtResource("2_0q8ti")

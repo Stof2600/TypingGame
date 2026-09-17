@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://ble7w31xmu6g1"]
+
+[ext_resource type="Script" uid="uid://c2k68q2f4mly4" path="res://Script/Targets/TypingTarget.gd" id="1_w8xtw"]
+[ext_resource type="Material" uid="uid://bf7glu6ak1e17" path="res://Materials/Targets/Enemies/EnemyGray.tres" id="2_e0f28"]
+[ext_resource type="Material" uid="uid://cls48u1xovf4i" path="res://Materials/Targets/Enemies/EnemyRed.tres" id="3_q7v0w"]
+[ext_resource type="Material" uid="uid://dm2v4q6y3fpx3" path="res://Materials/Targets/Enemies/EnemyDetail1.tres" id="4_6pd6f"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5qqba"]
+radius = 0.8
+
+[sub_resource type="SphereMesh" id="SphereMesh_6pd6f"]
+radial_segments = 6
+rings = 6
+
+[sub_resource type="TorusMesh" id="TorusMesh_qkjsf"]
+inner_radius = 0.6
+outer_radius = 0.8
+rings = 8
+ring_segments = 5
+
+[sub_resource type="BoxMesh" id="BoxMesh_qkjsf"]
+size = Vector3(0.1, 0.3, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2nvy4"]
+size = Vector3(0.06, 0.5, 0.06)
+
+[node name="FloatingEnemy" type="StaticBody3D" unique_id=205744907 groups=["Target"]]
+script = ExtResource("1_w8xtw")
+onDeathScore = 10
+mistypeScoreLoss = 10
+permanent = true
+randomPermanent = true
+slideToPermanent = true
+permanentOffset = Vector3(0, 0, -5)
+doSpinAnimation = true
+spinAnimationDirection = Vector3(0, 0, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=752188412]
+transform = Transform3D(0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("SphereShape3D_5qqba")
+
+[node name="Main" type="MeshInstance3D" parent="." unique_id=939478118]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+material_override = ExtResource("2_e0f28")
+mesh = SubResource("SphereMesh_6pd6f")
+
+[node name="Ring" type="MeshInstance3D" parent="." unique_id=101706141]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("TorusMesh_qkjsf")
+surface_material_override/0 = ExtResource("3_q7v0w")
+
+[node name="Detail1" type="MeshInstance3D" parent="." unique_id=1840753513]
+transform = Transform3D(0.9396926, -0.24184474, 0.24184474, 0, 0.70710677, 0.70710677, -0.34202012, -0.664463, 0.664463, 0.14920282, 0.23228121, 0.35912502)
+material_override = ExtResource("4_6pd6f")
+mesh = SubResource("BoxMesh_qkjsf")
+surface_material_override/0 = ExtResource("3_q7v0w")
+
+[node name="Detail5" type="MeshInstance3D" parent="." unique_id=1143991108]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.7071067, 0.7071067, 0, -0.7071067, 0.7071067, 0, 0.22158699, 0.41121376)
+material_override = ExtResource("4_6pd6f")
+mesh = SubResource("BoxMesh_qkjsf")
+surface_material_override/0 = ExtResource("3_q7v0w")
+
+[node name="Detail2" type="MeshInstance3D" parent="." unique_id=146639066]
+transform = Transform3D(0.93969256, 0.24184473, -0.24184473, 0, 0.7071067, 0.7071067, 0.3420201, -0.6644629, 0.6644629, -0.149, 0.232, 0.359)
+material_override = ExtResource("4_6pd6f")
+mesh = SubResource("BoxMesh_qkjsf")
+surface_material_override/0 = ExtResource("3_q7v0w")
+
+[node name="Detail3" type="MeshInstance3D" parent="." unique_id=1256071913]
+transform = Transform3D(0.42261815, -0.90630764, 0, 0.90630764, 0.42261815, 0, 0, 0, 0.99999994, 0, -0.07, 0.472)
+material_override = ExtResource("4_6pd6f")
+mesh = SubResource("BoxMesh_2nvy4")
+surface_material_override/0 = ExtResource("3_q7v0w")
+
+[node name="Detail4" type="MeshInstance3D" parent="." unique_id=921060005]
+transform = Transform3D(0.42261815, 0.90630764, 0, -0.90630764, 0.42261815, 0, 0, 0, 0.99999994, 0, -0.07, 0.472)
+material_override = ExtResource("4_6pd6f")
+mesh = SubResource("BoxMesh_2nvy4")
+surface_material_override/0 = ExtResource("3_q7v0w")

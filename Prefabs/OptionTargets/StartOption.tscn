@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://c35qvucn13m1s"]
+
+[ext_resource type="Script" uid="uid://c2k68q2f4mly4" path="res://Script/Targets/TypingTarget.gd" id="1_ydo7u"]
+[ext_resource type="Material" uid="uid://do7l2tf7skax" path="res://Materials/Targets/Options/OptionStart.tres" id="2_uiip8"]
+[ext_resource type="Material" uid="uid://dohv8wc807gl3" path="res://Materials/Targets/Options/OptionGray.tres" id="3_6d62a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3dxm6"]
+size = Vector3(0.4, 0.6, 0.4)
+
+[sub_resource type="SphereMesh" id="SphereMesh_kjvhd"]
+radius = 0.2
+height = 0.2
+radial_segments = 8
+rings = 3
+is_hemisphere = true
+
+[node name="StartOption" type="StaticBody3D" unique_id=206487964 groups=["MenuTarget"]]
+script = ExtResource("1_ydo7u")
+targetWord = "start"
+onDeathScore = 0
+mistypeScoreLoss = 0
+getRandomWord = false
+immortal = true
+permanent = true
+permanentOffset = Vector3(0, -2, -10)
+doSpinAnimation = true
+spinAnimationDirection = Vector3(0, 4, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1519630844]
+shape = SubResource("BoxShape3D_3dxm6")
+
+[node name="Crystal" type="CSGPolygon3D" parent="." unique_id=384099031]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+polygon = PackedVector2Array(0, 0.5, 0.5, 0, 0, -0.5, -0.5, 0)
+mode = 1
+spin_degrees = 359.0
+spin_sides = 4
+material = ExtResource("2_uiip8")
+
+[node name="Top" type="MeshInstance3D" parent="." unique_id=1471786053]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09345186, 0)
+material_override = ExtResource("3_6d62a")
+mesh = SubResource("SphereMesh_kjvhd")
+
+[node name="Bottom" type="MeshInstance3D" parent="." unique_id=752059936]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, -0.093, 0)
+material_override = ExtResource("3_6d62a")
+mesh = SubResource("SphereMesh_kjvhd")

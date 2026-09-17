@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://c52xkufyqxkmk"]
+
+[ext_resource type="Material" uid="uid://bx1b66vnj8cnt" path="res://Materials/World/Grass.tres" id="1_rfs41"]
+[ext_resource type="Material" uid="uid://bkx0j4hrw57w8" path="res://Materials/World/Building.tres" id="2_j02ng"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uu6xs"]
+size = Vector2(500, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5vvyt"]
+size = Vector3(5, 10, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rfs41"]
+size = Vector3(90, 3, 5)
+
+[node name="BridgeSegment" type="Node3D" unique_id=1911819567]
+
+[node name="Ground" type="MeshInstance3D" parent="." unique_id=1011994539]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25)
+mesh = SubResource("PlaneMesh_uu6xs")
+surface_material_override/0 = ExtResource("1_rfs41")
+
+[node name="Pillar1" type="MeshInstance3D" parent="." unique_id=1467867966]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 5, -25)
+mesh = SubResource("BoxMesh_5vvyt")
+surface_material_override/0 = ExtResource("2_j02ng")
+
+[node name="Pillar4" type="MeshInstance3D" parent="." unique_id=2046674456]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 5, -25)
+mesh = SubResource("BoxMesh_5vvyt")
+surface_material_override/0 = ExtResource("2_j02ng")
+
+[node name="Pillar2" type="MeshInstance3D" parent="." unique_id=1403591784]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 5, -25)
+mesh = SubResource("BoxMesh_5vvyt")
+surface_material_override/0 = ExtResource("2_j02ng")
+
+[node name="Pillar3" type="MeshInstance3D" parent="." unique_id=658650537]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, 5, -25)
+mesh = SubResource("BoxMesh_5vvyt")
+surface_material_override/0 = ExtResource("2_j02ng")
+
+[node name="Connector" type="MeshInstance3D" parent="." unique_id=416013496]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.11356, -25)
+mesh = SubResource("BoxMesh_rfs41")
+surface_material_override/0 = ExtResource("2_j02ng")
+
+[node name="Connector2" type="MeshInstance3D" parent="." unique_id=1158187188]
+transform = Transform3D(0.97550386, -0.21998242, 0, 0.21998242, 0.97550386, 0, 0, 0, 1, -90.01859, -1.7243404, -25)
+mesh = SubResource("BoxMesh_rfs41")
+surface_material_override/0 = ExtResource("2_j02ng")
+
+[node name="Connector3" type="MeshInstance3D" parent="." unique_id=1502710614]
+transform = Transform3D(0.97553456, 0.2198462, 0, -0.2198462, 0.97553456, 0, 0, 0, 1, 90.019, -1.724, -25)
+mesh = SubResource("BoxMesh_rfs41")
+surface_material_override/0 = ExtResource("2_j02ng")

@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://pru3wm4um032"]
+
+[ext_resource type="Material" uid="uid://bx1b66vnj8cnt" path="res://Materials/World/Grass.tres" id="1_xiwvh"]
+[ext_resource type="Material" uid="uid://bkx0j4hrw57w8" path="res://Materials/World/Building.tres" id="2_4l3k4"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uu6xs"]
+size = Vector2(500, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xiwvh"]
+size = Vector3(5, 10, 5)
+
+[node name="RuinSegment" type="Node3D" unique_id=1911819567]
+
+[node name="Ground" type="MeshInstance3D" parent="." unique_id=1011994539]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25)
+mesh = SubResource("PlaneMesh_uu6xs")
+surface_material_override/0 = ExtResource("1_xiwvh")
+
+[node name="Building" type="MeshInstance3D" parent="." unique_id=2146890193]
+transform = Transform3D(0.93315446, -0.3594757, 0, 0.3594757, 0.93315446, 0, 0, 0, 1, 10.650964, 3.3101783, -15.275419)
+mesh = SubResource("BoxMesh_xiwvh")
+surface_material_override/0 = ExtResource("2_4l3k4")
+
+[node name="Building5" type="MeshInstance3D" parent="." unique_id=1234070794]
+transform = Transform3D(0.9961749, 0.087381765, 0, -0.087381765, 0.9961749, 0, 0, 0, 1, -10.939468, 2.2206903, -38.202145)
+mesh = SubResource("BoxMesh_xiwvh")
+surface_material_override/0 = ExtResource("2_4l3k4")
+
+[node name="Building2" type="MeshInstance3D" parent="." unique_id=29649284]
+transform = Transform3D(-4.371139e-08, -0.91514975, 0.40311408, 1, -4.0002465e-08, 1.7620676e-08, 0, 0.40311408, 0.91514975, 3.4795003, -1.3998461, -26.877623)
+mesh = SubResource("BoxMesh_xiwvh")
+surface_material_override/0 = ExtResource("2_4l3k4")
+
+[node name="Building3" type="MeshInstance3D" parent="." unique_id=1788802734]
+transform = Transform3D(0.039734013, -0.99916756, -0.009241277, 0.9731929, 0.04079452, -0.22634374, 0.22653233, 0, 0.9740037, -10.82935, 0.7775599, -15.315492)
+mesh = SubResource("BoxMesh_xiwvh")
+surface_material_override/0 = ExtResource("2_4l3k4")
+
+[node name="Building4" type="MeshInstance3D" parent="." unique_id=449246650]
+transform = Transform3D(1, 0, 0, 0, 0.7928537, -0.609412, 0, 0.609412, 0.7928537, -10.752345, 2.3370814, -21.325247)
+mesh = SubResource("BoxMesh_xiwvh")
+surface_material_override/0 = ExtResource("2_4l3k4")
